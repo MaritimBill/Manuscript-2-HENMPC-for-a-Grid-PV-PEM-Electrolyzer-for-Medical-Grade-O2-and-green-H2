@@ -1,0 +1,280 @@
+{
+  "expected_days_per_repeat": 7,
+  "expected_repeats": 10,
+  "expected_scenarios": [
+    "clear_sky",
+    "cloudy_rainy",
+    "oxygen_surge",
+    "communication_loss",
+    "sensor_fault_leak"
+  ],
+  "expected_controllers": [
+    "PID",
+    "SINGLE_MPC",
+    "BUFFER_RULE",
+    "FULL_MODEL_EMPC",
+    "PROPOSED"
+  ],
+  "expected_run_files": 250,
+  "run_files_found": 250,
+  "missing_run_files": [],
+  "unexpected_run_files": [],
+  "bad_run_files": [],
+  "duplicate_summary_keys": [],
+  "summary_rows": 250,
+  "aggregate_summary_rows": 25,
+  "expected_aggregate_rows": 25,
+  "data_quality_pass": true,
+  "complete": true,
+  "operational_constraint_totals": {
+    "o2_deficit_L": 8814339.731484814,
+    "purity_violations": 0.0,
+    "h2_o2_violations": 0.0,
+    "temperature_violations": 35.0,
+    "voltage_violations": 0.0,
+    "grid_limit_violations": 0.0,
+    "interlock_steps": 36208.0
+  },
+  "note": "Constraint violations are reported as experiment outcomes; they are not silently treated as data-file errors.",
+  "summary_key_columns_missing": [],
+  "summary_key_mismatches": {
+    "missing": [],
+    "unexpected": []
+  },
+  "summary_days_mismatch_rows": 0,
+  "summary_metric_columns_missing": [],
+  "summary_nonfinite_metrics": {},
+  "aggregate_key_columns_missing": [],
+  "aggregate_key_mismatches": {
+    "missing": [],
+    "unexpected": []
+  },
+  "operational_constraints_by_scenario_controller": {
+    "clear_sky/BUFFER_RULE": {
+      "o2_deficit_L": 1.3962164757685935e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "clear_sky/FULL_MODEL_EMPC": {
+      "o2_deficit_L": 1.3962164757685935e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "clear_sky/PID": {
+      "o2_deficit_L": 1.3962164757685935e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "clear_sky/PROPOSED": {
+      "o2_deficit_L": 1.3962164757685935e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "clear_sky/SINGLE_MPC": {
+      "o2_deficit_L": 1.3962164757685935e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "cloudy_rainy/BUFFER_RULE": {
+      "o2_deficit_L": 1.3510970120478271e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "cloudy_rainy/FULL_MODEL_EMPC": {
+      "o2_deficit_L": 1.3510970120478271e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "cloudy_rainy/PID": {
+      "o2_deficit_L": 1.3510970120478271e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "cloudy_rainy/PROPOSED": {
+      "o2_deficit_L": 1.3510970120478271e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "cloudy_rainy/SINGLE_MPC": {
+      "o2_deficit_L": 1.3510970120478271e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "communication_loss/BUFFER_RULE": {
+      "o2_deficit_L": 1.3830714351570317e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "communication_loss/FULL_MODEL_EMPC": {
+      "o2_deficit_L": 1.3830714351570317e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "communication_loss/PID": {
+      "o2_deficit_L": 1.3830714351570317e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "communication_loss/PROPOSED": {
+      "o2_deficit_L": 1.3830714351570317e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "communication_loss/SINGLE_MPC": {
+      "o2_deficit_L": 1.3830714351570317e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "oxygen_surge/BUFFER_RULE": {
+      "o2_deficit_L": 2550611.826553937,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 10.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 10249.0
+    },
+    "oxygen_surge/FULL_MODEL_EMPC": {
+      "o2_deficit_L": 1.4539480730491014e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "oxygen_surge/PID": {
+      "o2_deficit_L": 2603712.181883998,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 10.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 10238.0
+    },
+    "oxygen_surge/PROPOSED": {
+      "o2_deficit_L": 1.4539480730491014e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 0.0
+    },
+    "oxygen_surge/SINGLE_MPC": {
+      "o2_deficit_L": 2603722.1798259765,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 10.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 10238.0
+    },
+    "sensor_fault_leak/BUFFER_RULE": {
+      "o2_deficit_L": 1056293.543220901,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 5.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 5003.0
+    },
+    "sensor_fault_leak/FULL_MODEL_EMPC": {
+      "o2_deficit_L": 1.3773870932709508e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 120.0
+    },
+    "sensor_fault_leak/PID": {
+      "o2_deficit_L": 1.3773870932709508e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 120.0
+    },
+    "sensor_fault_leak/PROPOSED": {
+      "o2_deficit_L": 1.3773870932709508e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 120.0
+    },
+    "sensor_fault_leak/SINGLE_MPC": {
+      "o2_deficit_L": 1.3773870932709508e-10,
+      "purity_violations": 0.0,
+      "h2_o2_violations": 0.0,
+      "temperature_violations": 0.0,
+      "voltage_violations": 0.0,
+      "grid_limit_violations": 0.0,
+      "interlock_steps": 120.0
+    }
+  },
+  "status": "PASS"
+}
