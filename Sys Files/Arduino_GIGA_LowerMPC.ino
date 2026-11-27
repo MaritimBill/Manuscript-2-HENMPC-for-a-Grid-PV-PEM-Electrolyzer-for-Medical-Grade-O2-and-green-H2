@@ -1,5 +1,5 @@
 /*
- * Manuscript 2 — Arduino GIGA R1 WiFi lower controller / HIL interface.
+ * — Arduino GIGA R1 WiFi lower controller / HIL interface.
  * -------------------------------------------------------------------
  * Plant bridge: USB CDC Serial request/response to MATLAB/Simulink (1 s nominal step).
  * Supervisory and telemetry path: MQTT between GIGA and Python/web dashboard.
@@ -34,9 +34,9 @@
 #if __has_include("m2_secrets.h")
   #include "m2_secrets.h"
 #else
-
-  #define M2_WIFI_SSID "Galaxy A14 FD8D"
-  #define M2_WIFI_PASS "qwertyzxcvbnm"
+//NOTE!!!!
+  #define M2_WIFI_SSID "Place Your Network SSID here"
+  #define M2_WIFI_PASS "Place your Password"
   
 #endif
 #ifndef M2_MQTT_HOST
