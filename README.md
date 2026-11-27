@@ -10,21 +10,40 @@ This repository contains the simulation, neural-surrogate training, MATLAB/Simul
 
 ## 1. Repository Structure
 
-```text
-├── Data/                              # Archived simulation/PIL datasets, figures & summary tables
-│   ├── sil_summary.csv                # 250-run SIL aggregate summary (5 controllers x 5 scenarios x 10 repeats)
-│   ├── hil_clear_sky_1b56ddb2.csv     # 7-day clear-sky PIL/HIL telemetry (2,016 batch-end records)
-│   └── ...                            # Fault-injection logs, sensitivity outputs & publication figures
-├── Sys Files/                         # Executable Python runner, embedded firmware & MATLAB/Simulink plant
-│   ├── pem_empc_runner.py             # Main CLI runner (surrogate training, SIL campaigns, PIL collection & plots)
-│   ├── Arduino_GIGA_LowerMPC.ino   # Embedded Arduino GIGA R1 WiFi lower-layer MPC & interlock firmware
-│   ├── plant_fn.m                  # Six-state dynamic PEM electrolyzer plant function (1.0 s virtual step)
-│   ├── PEM_Step.slx                # Fixed-step Simulink reference verification model
-│   └── dat                      # Working directory created automatically during runs
-│       ├── sys_config.json             # Locked plant, electrochemical, thermal, BoP & controller manifest
-│       └── surrogate_metrics.json     # Held-out 1-step (7,500 samples) & recursive rollout metrics
-└── README.md                          # Repository overview, setup & reproducibility instructions
-```
+PEM-Hospital-O2-H2-EMPC/
+├── README.md                                  # Setup, architecture & reproducibility guide
+├── Data/                                      # Input data, frozen surrogate, results & figures
+│   ├── nairobi_nasa_weather.csv               # Required: 8,760-row hourly Nairobi solar & ambient trace
+│   ├── sys_config.json                        # Required: locked plant, BoP, tariff & controller parameters
+│   ├── surrogate.npz                          # Required: frozen 10-64-64-4 MLP weights & input scaler
+│   ├── surrogate_metrics.json                 # Required: held-out 1-step & rollout metrics + SHA-256 hash
+│   ├── surrogate_training.csv                 # Optional: 37,500-row dataset (needed only for evaluate-surrogate)
+│   ├── results/                               # All archived SIL & PIL/HIL run outputs
+│   │   ├── sil_summary.csv                    # 250-run SIL aggregate summary (mean, SD, 95% CI)
+│   │   ├── sil_summary_raw.csv                # Per-repeat SIL metrics across all 250 runs
+│   │   ├── sil_validation_report.json         # Automated SIL completeness & conservation audit
+│   │   ├── hil_clear_sky_1b56ddb2.csv         # 7-day clear-sky PIL/HIL telemetry (2,016 batches)
+│   │   ├── hil_clear_sky_1b56ddb2_summary.json# Summary statistics for the 7-day PIL/HIL run
+│   │   ├── hil_sensor_out_of_range_b5578d38.csv
+│   │   ├── hil_purity_alarm_86a97ea1.csv
+│   │   ├── hil_sensor_fault_leak_25755226.csv
+│   │   └── hil_communication_loss_2771cc39.csv
+│   └── paper_outputs/                         # Publication figures & summary tables
+│       ├── fig05_clear_sky.png
+│       ├── fig06_cloudy_rainy.png
+│       ├── fig07_oxygen_surge.png
+│       ├── fig08_communication_loss.png
+│       ├── fig09_comparison.png
+│       ├── fig10_sensor_fault_leak.png
+│       ├── fig11_communication_loss.png
+│       ├── fig12_oxygen_surge_comparison.png
+│       └── table_sil_constraint_audit.csv
+└── Sys Files/                                 # Executable scripts, embedded firmware & Simulink model
+    ├── pem_empc_runner.py                     # Unified CLI runner (surrogate, SIL, PIL & paper plots)
+    ├── Arduino_GIGA_LowerMPC.ino              # Arduino GIGA R1 WiFi (Cortex-M7) embedded MPC & interlocks
+    ├── plant_fn.m                             # Six-state dynamic PEM plant function (1.0 s virtual step)
+    └── PEM_Step.slx                           # Fixed-step Simulink reference verification model
+
 
 ### Architecture Overview
 
