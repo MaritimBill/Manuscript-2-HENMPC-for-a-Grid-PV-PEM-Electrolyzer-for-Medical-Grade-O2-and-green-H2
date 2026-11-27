@@ -23,12 +23,12 @@ PEM-Hospital-O2-H2-EMPC/
 │   │   ├── sil_summary.csv                     # 250-run SIL aggregate summary (mean, SD, 95% CI)
 │   │   ├── sil_summary_raw.csv                 # Per-repeat SIL metrics across all 250 runs
 │   │   ├── sil_validation_report.json          # Automated SIL completeness & conservation audit
-│   │   ├── hil_clear_sky_1b56ddb2.csv          # 7-day clear-sky PIL/HIL telemetry (2,016 batches)
-│   │   ├── hil_clear_sky_1b56ddb2_summary.json # Summary statistics for the 7-day PIL/HIL run
-│   │   ├── hil_sensor_out_of_range_b5578d38.csv
-│   │   ├── hil_purity_alarm_86a97ea1.csv
-│   │   ├── hil_sensor_fault_leak_25755226.csv
-│   │   └── hil_communication_loss_2771cc39.csv
+│   │   ├── pil_clear_sky_1b56ddb2.csv          # 7-day clear-sky PIL/HIL telemetry (2,016 batches)
+│   │   ├── pil_clear_sky_1b56ddb2_summary.json # Summary statistics for the 7-day PIL/HIL run
+│   │   ├── pil_sensor_out_of_range_b5578d38.csv
+│   │   ├── pil_purity_alarm_86a97ea1.csv
+│   │   ├── pil_sensor_fault_leak_25755226.csv
+│   │   └── pil_communication_loss_2771cc39.csv
 │   └── paper_outputs/                          # Publication figures & summary tables
 │       ├── fig05_clear_sky.png
 │       ├── fig06_cloudy_rainy.png
