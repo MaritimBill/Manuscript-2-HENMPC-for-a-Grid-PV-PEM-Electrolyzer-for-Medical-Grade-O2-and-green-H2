@@ -10,25 +10,26 @@ This repository contains the simulation, neural-surrogate training, MATLAB/Simul
 
 ## 1. Repository Structure
 
+```text
 PEM-Hospital-O2-H2-EMPC/
-├── README.md                                  # Setup, architecture & reproducibility guide
-├── Data/                                      # Input data, frozen surrogate, results & figures
-│   ├── nairobi_nasa_weather.csv               # Required: 8,760-row hourly Nairobi solar & ambient trace
-│   ├── sys_config.json                        # Required: locked plant, BoP, tariff & controller parameters
-│   ├── surrogate.npz                          # Required: frozen 10-64-64-4 MLP weights & input scaler
-│   ├── surrogate_metrics.json                 # Required: held-out 1-step & rollout metrics + SHA-256 hash
-│   ├── surrogate_training.csv                 # Optional: 37,500-row dataset (needed only for evaluate-surrogate)
-│   ├── results/                               # All archived SIL & PIL/HIL run outputs
-│   │   ├── sil_summary.csv                    # 250-run SIL aggregate summary (mean, SD, 95% CI)
-│   │   ├── sil_summary_raw.csv                # Per-repeat SIL metrics across all 250 runs
-│   │   ├── sil_validation_report.json         # Automated SIL completeness & conservation audit
-│   │   ├── hil_clear_sky_1b56ddb2.csv         # 7-day clear-sky PIL/HIL telemetry (2,016 batches)
-│   │   ├── hil_clear_sky_1b56ddb2_summary.json# Summary statistics for the 7-day PIL/HIL run
+├── README.md                                   # Setup, architecture & reproducibility guide
+├── Data/                                       # Input data, frozen surrogate, results & figures
+│   ├── nairobi_nasa_weather.csv                # Required: 8,760-row hourly Nairobi solar & ambient trace
+│   ├── sys_config.json                         # Required: locked plant, BoP, tariff & controller parameters
+│   ├── surrogate.npz                           # Required: frozen 10-64-64-4 MLP weights & input scaler
+│   ├── surrogate_metrics.json                  # Required: held-out 1-step & rollout metrics + SHA-256 hash
+│   ├── surrogate_training.csv                  # Optional: 37,500-row dataset (needed only for evaluate-surrogate)
+│   ├── results/                                # All archived SIL & PIL/HIL run outputs
+│   │   ├── sil_summary.csv                     # 250-run SIL aggregate summary (mean, SD, 95% CI)
+│   │   ├── sil_summary_raw.csv                 # Per-repeat SIL metrics across all 250 runs
+│   │   ├── sil_validation_report.json          # Automated SIL completeness & conservation audit
+│   │   ├── hil_clear_sky_1b56ddb2.csv          # 7-day clear-sky PIL/HIL telemetry (2,016 batches)
+│   │   ├── hil_clear_sky_1b56ddb2_summary.json # Summary statistics for the 7-day PIL/HIL run
 │   │   ├── hil_sensor_out_of_range_b5578d38.csv
 │   │   ├── hil_purity_alarm_86a97ea1.csv
 │   │   ├── hil_sensor_fault_leak_25755226.csv
 │   │   └── hil_communication_loss_2771cc39.csv
-│   └── paper_outputs/                         # Publication figures & summary tables
+│   └── paper_outputs/                          # Publication figures & summary tables
 │       ├── fig05_clear_sky.png
 │       ├── fig06_cloudy_rainy.png
 │       ├── fig07_oxygen_surge.png
@@ -38,12 +39,12 @@ PEM-Hospital-O2-H2-EMPC/
 │       ├── fig11_communication_loss.png
 │       ├── fig12_oxygen_surge_comparison.png
 │       └── table_sil_constraint_audit.csv
-└── Sys Files/                                 # Executable scripts, embedded firmware & Simulink model
-    ├── pem_empc_runner.py                     # Unified CLI runner (surrogate, SIL, PIL & paper plots)
-    ├── Arduino_GIGA_LowerMPC.ino              # Arduino GIGA R1 WiFi (Cortex-M7) embedded MPC & interlocks
-    ├── plant_fn.m                             # Six-state dynamic PEM plant function (1.0 s virtual step)
-    └── PEM_Step.slx                           # Fixed-step Simulink reference verification model
-
+└── Sys Files/                                  # Executable scripts, embedded firmware & Simulink model
+    ├── pem_empc_runner.py                      # Unified CLI runner (surrogate, SIL, PIL & paper plots)
+    ├── Arduino_GIGA_LowerMPC.ino               # Arduino GIGA R1 WiFi (Cortex-M7) embedded MPC & interlocks
+    ├── plant_fn.m                              # Six-state dynamic PEM plant function (1.0 s virtual step)
+    └── PEM_Step.slx                            # Fixed-step Simulink reference verification model
+```
 
 ### Architecture Overview
 
@@ -65,7 +66,7 @@ pip install numpy pandas scipy matplotlib torch paho-mqtt pyserial
 ### Hardware & MATLAB/Simulink (For PIL/HIL Runs Only)
 * **Microcontroller:** Arduino GIGA R1 WiFi (`STM32H747XI`, compiled for the Cortex-M7 core via Arduino IDE `2.x` with `Arduino Mbed OS Giga Boards`).
 * **Plant Bridge:** MATLAB/Simulink (`R2023b` or newer) connected to the Arduino GIGA R1 over USB Serial (`115200` baud).
-* **Broker:** MQTT broker (configured in `m2_config.json`; laboratory prototype tested via Wi-Fi MQTT).
+* **Broker:** MQTT broker (configured in `Data/sys_config.json`; laboratory prototype tested via Wi-Fi MQTT).
 
 ---
 
@@ -95,7 +96,7 @@ Executes all **5 controllers** (`PID`, `SINGLE_MPC`, `BUFFER_RULE`, `FULL_MODEL_
 python pem_empc_runner.py sil --days 7 --repeats 10 --allow-expanded-campaign
 python pem_empc_runner.py paper --days 7 --repeats 10
 ```
-Outputs are saved under `Sys Files/m2_data/results/` and `Sys Files/m2_data/paper_outputs/` (archived in `Data/`).
+Outputs are written directly to `Data/results/` and `Data/paper_outputs/`.
 
 ### D. Active Hydrogen-Offtake Sensitivity Check
 Evaluates downstream hydrogen export ($\dot{m}_{\text{H}_2,\text{export,req}} = 1.5 \times 10^{-4}\text{ kg/s} = 12.96\text{ kg/day}$ at $800\text{ KES/kg}$, weight $0.5$):
@@ -104,16 +105,16 @@ python pem_empc_runner.py sil --days 1 --repeats 1 --h2-export-demand-kg-s 0.000
 ```
 
 ### E. Embedded Processor-in-the-Loop (PIL / Time-Compressed HIL) Runs
-With `M2_Arduino_GIGA_LowerMPC.ino` flashed to the Arduino GIGA R1 WiFi and the MATLAB USB-serial bridge active inside `Sys Files/`:
+With `Arduino_GIGA_LowerMPC.ino` flashed to the Arduino GIGA R1 WiFi and the MATLAB USB-serial bridge active inside `Sys Files/`:
 ```bash
-# 7-day clear-sky batch-accelerated trajectory (604,800 simulated seconds)
-python pem_empc_runner.py collect --scenario clear_sky --duration-s 604800
+# 7-day clear-sky batch-accelerated trajectory (604,800 simulated seconds; 1-h wall cap)
+python pem_empc_runner.py collect --scenario clear_sky --sim-duration-s 604800 --duration-s 3600
 
 # Planned hardware fault-injection verification runs (triggered at t = 900 s)
-python pem_empc_runner.py collect --scenario sensor_out_of_range --duration-s 1800 --event-start-s 900
-python pem_empc_runner.py collect --scenario purity_alarm --duration-s 1800 --event-start-s 900
-python pem_empc_runner.py collect --scenario sensor_fault_leak --duration-s 1800 --event-start-s 900
-python pem_empc_runner.py collect --scenario communication_loss --duration-s 2400 --event-start-s 900
+python pem_empc_runner.py collect --scenario sensor_out_of_range --sim-duration-s 1800 --duration-s 1800 --event-start-s 900
+python pem_empc_runner.py collect --scenario purity_alarm --sim-duration-s 1800 --duration-s 1800 --event-start-s 900
+python pem_empc_runner.py collect --scenario sensor_fault_leak --sim-duration-s 1800 --duration-s 1800 --event-start-s 900
+python pem_empc_runner.py collect --scenario communication_loss --sim-duration-s 2400 --duration-s 1800 --event-start-s 900
 ```
 
 ---
