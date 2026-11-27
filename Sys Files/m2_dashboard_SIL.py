@@ -1,12 +1,10 @@
-"""Manuscript 2 — SIL evaluation and Arduino/Simulink HIL supervisor.
+""" — SIL evaluation.
 
 Architecture retained:
   * Six-state PEM plant mirror.
   * PID and single-MPC local baselines.
   * Full-model EMPC and hybrid exact-first-step/neural-surrogate EMPC.
-  * Arduino GIGA lower current tracker; MATLAB/Simulink plant exchanges each
-    request/response over USB Serial, while MQTT carries supervisory commands
-    and telemetry between the GIGA and the Python/web dashboard.
+  * PROPOSED
 
 The surrogate is trained once by `train`; HIL `collect` only loads and validates the frozen
 m2_data/surrogate.npz. No online retraining occurs.
