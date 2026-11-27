@@ -1,4 +1,4 @@
-"""Manuscript 2 — SIL evaluation and Arduino/Simulink HIL supervisor.
+""" — PIL: supervisor.
 
 Architecture retained:
   * Six-state PEM plant mirror.
