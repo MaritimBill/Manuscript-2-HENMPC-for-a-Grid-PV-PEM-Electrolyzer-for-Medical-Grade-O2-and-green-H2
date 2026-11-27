@@ -21,7 +21,7 @@ This repository contains the simulation, neural-surrogate training, MATLAB/Simul
 │   ├── plant_fn.m                  # Six-state dynamic PEM electrolyzer plant function (1.0 s virtual step)
 │   ├── PEM_Step.slx                # Fixed-step Simulink reference verification model
 │   └── dat                      # Working directory created automatically during runs
-│       ├── config.json             # Locked plant, electrochemical, thermal, BoP & controller manifest
+│       ├── sys_config.json             # Locked plant, electrochemical, thermal, BoP & controller manifest
 │       └── surrogate_metrics.json     # Held-out 1-step (7,500 samples) & recursive rollout metrics
 └── README.md                          # Repository overview, setup & reproducibility instructions
 ```
